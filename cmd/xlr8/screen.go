@@ -208,19 +208,27 @@ func StartScreen() {
 	if err != nil {
 		panic(err)
 	}
+
 	m := model{
 		dir:      dir,
 		fileList: GetFoldersList(dir),
 	}
+
 	p := tea.NewProgram(m, tea.WithAltScreen())
+
 	finalModel, err := p.Run()
 	if err != nil {
 		panic(err)
 	}
+
 	selected := finalModel.(model)
-	fmt.Println("Target Path : ", selected.dir)
+
+	fmt.Println("Target Path :", selected.dir)
+
+	tmpFile := filepath.Join(os.TempDir(), "xlr8-cwd")
+
 	err = os.WriteFile(
-		"/tmp/xlr8-cwd",
+		tmpFile,
 		[]byte(selected.dir),
 		0644,
 	)
