@@ -1,0 +1,7 @@
+Package: xlr8
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: CS7player
+Description: Terminal file manager written in Go
